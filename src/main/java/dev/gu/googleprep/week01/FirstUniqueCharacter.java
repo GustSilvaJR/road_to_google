@@ -7,8 +7,22 @@ public final class FirstUniqueCharacter {
     private FirstUniqueCharacter() { }
 
     public static OptionalInt firstUniqueCodePoint(String text) {
-        // TODO: escreva sua solução. Comece por entradas ASCII.
-        // Não consulte uma solução pronta durante o diagnóstico.
-        throw new UnsupportedOperationException("Exercício pendente");
+
+        int foundEqual = 0;
+        for (int i=0; i < text.length(); i++){
+            for(int j=0; j < text.length(); j++){
+                if(i != j && text.charAt(i) == text.charAt(j)){
+                    foundEqual = 1;
+                }
+            }
+            if(foundEqual == 0){
+                System.out.println(text.charAt(i));
+                return OptionalInt.of(text.codePointAt(i));
+            }else{
+                foundEqual = 0;
+            }
+        }
+
+        return null;
     }
 }
